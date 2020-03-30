@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="./styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
     <script type="text/javascript" src="scripts/main.js" defer></script>
   </head>
   <body>
-    <div class="posts-container"></div>
+  <div class="wrapper">
+    <h1 class='main-heading'>Legal Nodes Blog</h1>
+    <main>
+      <div class="posts-container"></div>
+    </main>
+
+    <div class="pagination">
+      <button class="pagination__previous pagination__pages-control button">Previous</button>
+      <div class="pagination__pages-container">
+        <button class="pagination__page button"></button>
+        <button class="pagination__page button"></button>
+        <button class="pagination__page button"></button>
+        <button class="pagination__page button"></button>
+        <button class="pagination__page button"></button>
+        <div class="pagination__decoration">. . .</div>
+      </div>
+      <button class="pagination__next pagination__pages-control button">Next</button>
+    </div>
+
+  </div>
+
   </body>
 </html>

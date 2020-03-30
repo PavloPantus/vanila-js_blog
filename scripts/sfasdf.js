@@ -1,6 +1,6 @@
 'use strict';
 
-const subUrl = '/vanila-js_blog';
+const subUrl = '';
 const apiKey = 'e9ed8bc1-3f0e-4cdc-b044-c07012220ab8';
 const goToPostUrl = (apiUrl) => {
   document.location.href = `${subUrl}/post.html?postApiUrl=${apiUrl}`;
@@ -9,7 +9,10 @@ let currentPage = 1;
 
 const renderDatatoHTML = (data)=>{
 
-
+  document.querySelectorAll('.pagination__page')
+    .forEach((el, i) => {
+      el.innerText = currentPage + (i);
+    });
 
   const postsContainer = document.querySelector('.posts-container');
 
@@ -17,6 +20,7 @@ const renderDatatoHTML = (data)=>{
 
   data.response.results
     .forEach((post, i) => {
+      console.log(post, i)
 
       const postCardInnerHtml = `
           <div class="post-card" onclick="goToPostUrl('${post.apiUrl}')" >
@@ -51,7 +55,7 @@ const renderDatatoHTML = (data)=>{
 
       postsContainer.innerHTML += postCardInnerHtml;
 
-      document.querySelector('.main-heading').scrollIntoView();
+      document.querySelector('.pagination').scrollIntoView();
 
       return data
     });
@@ -61,7 +65,7 @@ const loadPostsData = (pageNumber) => {
   fetch(`https://content.guardianapis.com/search?page=${pageNumber}&page-size=9&api-key=${apiKey}&show-tags=contributor&show-fields=trailText`)
     .then(response => response.json())
     .then(data => {
-      renderDatatoHTML(data)
+      setTimeout(()=>{renderDatatoHTML(data)}, 2000)
     })
 };
 
@@ -69,22 +73,14 @@ document.querySelector('.pagination__previous')
   .addEventListener('click', () => {
     if (currentPage > 1) {
       currentPage -= 5;
-      document.querySelectorAll('.pagination__page')
-        .forEach((el, i) => {
-          el.innerText = currentPage + (i);
-        });
-     // loadPostsData(currentPage);
+      loadPostsData(currentPage);
     }
   });
 
 document.querySelector('.pagination__next')
   .addEventListener('click', () => {
     currentPage += 5;
-    document.querySelectorAll('.pagination__page')
-      .forEach((el, i) => {
-        el.innerText = currentPage + (i);
-      });
-   // loadPostsData(currentPage);
+    loadPostsData(currentPage);
   });
 
 document.querySelectorAll('.pagination__page')
