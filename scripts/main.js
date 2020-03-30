@@ -30,7 +30,7 @@ const renderDatatoHTML = (data)=>{
 
               <div class="post-card__author-container">
                 <img
-                  src=${(post.tags[0] || []).bylineImageUrl || '/images/author-photo-layout.png'}
+                  src=${(post.tags[0] || []).bylineImageUrl || 'http://dummyimage.com/91x91/99cccc/ffffff.gif&text=Author+photo'}
                   class="post-card__author-photo"
                 />
 

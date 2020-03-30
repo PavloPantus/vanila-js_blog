@@ -42,7 +42,7 @@ fetch(`${postApiUrl}?api-key=${apiKey}&show-tags=contributor,keyword&show-fields
 
          <div class="post__author-container">
            <img
-             src=${(post.tags.filter(tag=>tag.type==='contributor')[0] || []).bylineImageUrl || '/images/author-photo-layout.png'}
+             src=${(post.tags.filter(tag=>tag.type==='contributor')[0] || []).bylineImageUrl || 'http://dummyimage.com/385x385/99cccc/ffffff.gif&text=Author+photo'}
              class="post__author-photo"
            />
 
